@@ -1,0 +1,1 @@
+Hello <font size='150' color='#FF0000' background='#00FFFF'>Rust</font> from <font background='#000' color='#FFF'>IntelliJ IDEA!</font>
