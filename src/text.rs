@@ -7,7 +7,7 @@ use html_parser::Element;
 use imageproc::drawing::text_size;
 use rusttype::{Font, Scale};
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Text {
     pub content: String,
     pub font_size: f32,
@@ -30,15 +30,7 @@ impl Text {
     }
 
     pub fn size(&self, font: &Font) -> (u32, u32) {
-        let (w, h) = if self.content.ends_with(' ') {
-            let mut new_content = self.content.clone();
-            new_content.pop();
-            new_content.push('0');
-            text_size(self.scale(), &font, new_content.as_str())
-        } else {
-            text_size(self.scale(), &font, self.content.as_str())
-        };
-
+        let (w, h) = text_size(self.scale(), &font, self.content.replace(" ", "0").as_str());
         (w as u32, h as u32)
     }
 

@@ -30,12 +30,12 @@ pub struct Parameter {
 
 fn main() {
     let params = Parameter::parse();
+    let font = load_font("assets/JetBrainsMono-Regular.ttf");
+    let content = Content::new(&params.input_path);
+    dbg!(&content);
+
     let mut canvas = ImageCanvas::new(params.image_width, params.image_height);
     canvas.fill_color(params.background_color);
-
-    let content = Content::new(&params.input_path);
-
-    let font = load_font("assets/JetBrainsMono-Regular.ttf");
     canvas.draw(
         &content,
         Rect::at(params.padding as i32, params.padding as i32).of_size(

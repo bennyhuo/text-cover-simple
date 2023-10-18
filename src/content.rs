@@ -4,6 +4,7 @@ use html_parser::{Dom, Element, Node};
 
 use crate::text::Text;
 
+#[derive(Debug)]
 pub struct Content {
     pub texts: Vec<Text>,
 }
