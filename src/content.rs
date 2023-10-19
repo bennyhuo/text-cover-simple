@@ -13,10 +13,7 @@ impl Content {
     pub fn new(input_path: &str) -> Content {
         let mut content = Content { texts: vec![] };
 
-        let html = fs::read_to_string(input_path)
-            .unwrap()
-            .replace('\r', "")
-            .replace('\n', "<br>");
+        let html = fs::read_to_string(input_path).unwrap();
 
         let dom = Dom::parse(&html).expect("Invalid input.");
         dom.children
